@@ -14,6 +14,16 @@ Hey there! Welcome to my Golden Retriever celebration website. I created this be
 - Cute animations and paw prints floating around
 - A cozy dark/light mode to make browsing comfortable any time of day
 
+## Project Setup
+
+The project includes a `.gitignore` file that excludes:
+- Dependencies and package managers
+- Environment variables and secrets
+- IDE and editor files
+- Build outputs and caches
+- Logs and testing files
+- Vercel deployment files
+
 ## Want to Help?
 
 Found something cool about Golden Retrievers that I missed? Or spotted a typo? Feel free to let me know! I'm always happy to make this website even better.
