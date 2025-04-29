@@ -10,12 +10,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles/main.css">
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KPXWCXXPV3"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-XXXXXXXXXX');
+        gtag('config', 'G-KPXWCXXPV3');
     </script>
 </head>
 <body>
@@ -127,7 +127,7 @@
             "Golden Retrievers have a natural instinct to carry things in their mouths."
         ];
 
-        // Random fact button
+        // Random fact 
         const factButton = document.getElementById('new-fact');
         const factText = document.getElementById('dog-fact');
 
@@ -140,7 +140,7 @@
             }, 500);
         });
 
-        // Bark sound on image click
+        // Bark sound 
         const dogImage = document.getElementById('dog-image');
         const barkSound = document.getElementById('bark-sound');
         const wagTail = document.getElementById('wag-tail');
@@ -149,7 +149,7 @@
             barkSound.currentTime = 0;
             barkSound.play();
             
-            // Add wagging animation
+            // wagging animatoin
             dogImage.classList.add('wagging');
             setTimeout(() => {
                 dogImage.classList.remove('wagging');
@@ -173,7 +173,7 @@
         const themeToggle = document.getElementById('theme-toggle');
         const body = document.body;
         
-        // Check for saved theme preference
+        // saved theme preference
         if (localStorage.getItem('darkMode') === 'true') {
             body.classList.add('dark-mode');
             themeToggle.checked = true;
