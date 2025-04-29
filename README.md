@@ -2,8 +2,9 @@
 
 Hey there! Welcome to my Golden Retriever celebration website. I created this because I absolutely love these amazing dogs and wanted to share that love with the world. This is a fun, interactive website where you can learn about Golden Retrievers, see some adorable pictures, and even test your knowledge with a quiz!
 
-## 🌐 Live Website
-You can visit the website at: [https://tm-dog.vercel.app/](https://tm-dog.vercel.app/)
+## 🌐 Live Websites
+- Production: [https://tm-dog.vercel.app/](https://tm-dog.vercel.app/)
+- Staging: [https://tm-dog-git-staging-exyzee.vercel.app/](https://tm-dog-git-staging-exyzee.vercel.app/)
 
 ## What's Inside
 
