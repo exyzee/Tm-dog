@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Retriever Celebration</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&family=Comfortaa:wght@400;500;600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+</head>
+<body>
+    <div class="floating-paws"></div>
+    
+    <div class="container">
+        <header>
+            <h1 class="typing-text">Meet your new best friend...</h1>
+            <div class="theme-toggle">
+                <i class="fas fa-moon"></i>
+                <label class="switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <i class="fas fa-sun"></i>
+            </div>
+        </header>
+
+        <main>
+            <div class="image-container">
+                <img src="https://images.unsplash.com/photo-1552053831-71594a27632d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1200&q=80" alt="Happy Golden Retriever" id="dog-image">
+                <div class="image-frame"></div>
+                <div class="image-overlay">
+                    <span class="click-hint">Click me for a surprise!</span>
+                </div>
+            </div>
+
+            <div class="content">
+                <p class="fact" id="dog-fact">Golden Retrievers are known for their gentle temperament and intelligence, making them perfect family companions.</p>
+                <button id="new-fact" class="glow-button">New Fact</button>
+                
+                <div class="interactive-section">
+                    <h2>Golden Retriever Gallery</h2>
+                    <div class="gallery">
+                        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1633722715463-d30f4f325e24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Golden Retriever Puppy">
+                        </div>
+                        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1601979031925-424c5e6f5b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1601979031925-424c5e6f5b5f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Golden Retriever Adult">
+                        </div>
+                        <div class="gallery-item" data-src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80">
+                            <img src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Golden Retriever Family">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-section">
+                    <h2>Golden Retriever Quiz</h2>
+                    <div class="quiz-container">
+                        <div id="quiz-question"></div>
+                        <div id="quiz-options"></div>
+                        <button id="next-question" class="glow-button">Next Question</button>
+                        <div id="quiz-result"></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <div class="cookie-banner" id="cookie-banner">
+            <p>We use cookies to enhance your experience. By continuing to visit this site you agree to our use of cookies.</p>
+            <div class="cookie-buttons">
+                <button class="accept-cookies">Accept</button>
+                <a href="privacy.html" class="privacy-link">Privacy Policy</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="image-modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+    <audio id="bark-sound" src="https://assets.mixkit.co/active_storage/sfx/2018/bark-2018.wav" preload="auto"></audio>
+    <audio id="wag-tail" src="https://assets.mixkit.co/active_storage/sfx/2018/wag-tail-2018.wav" preload="auto"></audio>
+
+    <script>
+        // Typing effect
+        const title = document.querySelector('.typing-text');
+        const text = title.textContent;
+        title.textContent = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < text.length) {
+                title.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+        
+        window.addEventListener('load', typeWriter);
+
+        // Dog facts array
+        const dogFacts = [
+            "Golden Retrievers were originally bred in Scotland in the mid-19th century.",
+            "They are one of the most popular dog breeds in the world.",
+            "Golden Retrievers are excellent swimmers and love water.",
+            "They are known for their soft mouths, making them perfect for retrieving game.",
+            "Golden Retrievers are often used as therapy dogs due to their gentle nature.",
+            "They are highly intelligent and rank 4th in dog intelligence.",
+            "Golden Retrievers are great with children and make excellent family pets.",
+            "They have a life expectancy of 10-12 years.",
+            "Golden Retrievers are known for their beautiful golden coats that can range from light cream to deep gold.",
+            "They were originally bred to retrieve waterfowl for hunters.",
+            "Golden Retrievers have a double coat that helps them stay warm in cold water.",
+            "They are known for their friendly and tolerant attitudes.",
+            "Golden Retrievers are often used as guide dogs for the visually impaired.",
+            "They are excellent at learning commands and tricks.",
+            "Golden Retrievers have a natural instinct to carry things in their mouths."
+        ];
+
+        // Random fact button
+        const factButton = document.getElementById('new-fact');
+        const factText = document.getElementById('dog-fact');
+
+        factButton.addEventListener('click', () => {
+            const randomFact = dogFacts[Math.floor(Math.random() * dogFacts.length)];
+            factText.style.opacity = '0';
+            setTimeout(() => {
+                factText.textContent = randomFact;
+                factText.style.opacity = '1';
+            }, 500);
+        });
+
+        // Bark sound on image click
+        const dogImage = document.getElementById('dog-image');
+        const barkSound = document.getElementById('bark-sound');
+        const wagTail = document.getElementById('wag-tail');
+
+        dogImage.addEventListener('click', () => {
+            barkSound.currentTime = 0;
+            barkSound.play();
+            
+            // Add wagging animation
+            dogImage.classList.add('wagging');
+            setTimeout(() => {
+                dogImage.classList.remove('wagging');
+            }, 1000);
+        });
+
+        // Cookie banner
+        const cookieBanner = document.getElementById('cookie-banner');
+        const acceptCookies = document.querySelector('.accept-cookies');
+
+        if (!localStorage.getItem('cookiesAccepted')) {
+            cookieBanner.style.display = 'flex';
+        }
+
+        acceptCookies.addEventListener('click', () => {
+            localStorage.setItem('cookiesAccepted', 'true');
+            cookieBanner.style.display = 'none';
+        });
+
+        // Theme toggle
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+        
+        // Check for saved theme preference
+        if (localStorage.getItem('darkMode') === 'true') {
+            body.classList.add('dark-mode');
+            themeToggle.checked = true;
+        }
+        
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('dark-mode');
+                localStorage.setItem('darkMode', 'true');
+            } else {
+                body.classList.remove('dark-mode');
+                localStorage.setItem('darkMode', 'false');
+            }
+        });
+
+        // Gallery modal
+        const galleryItems = document.querySelectorAll('.gallery-item');
+        const modal = document.getElementById('image-modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeModal = document.querySelector('.close-modal');
+        
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                modal.style.display = 'flex';
+                modalImg.src = item.getAttribute('data-src');
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        // Quiz functionality
+        const quizQuestions = [
+            {
+                question: "Where were Golden Retrievers originally bred?",
+                options: ["Scotland", "England", "Ireland", "Wales"],
+                correct: 0
+            },
+            {
+                question: "What is a Golden Retriever's primary purpose?",
+                options: ["Guard dog", "Retrieving game", "Herding sheep", "Racing"],
+                correct: 1
+            },
+            {
+                question: "What is the average life expectancy of a Golden Retriever?",
+                options: ["5-7 years", "7-9 years", "10-12 years", "12-15 years"],
+                correct: 2
+            },
+            {
+                question: "What is a Golden Retriever's coat type?",
+                options: ["Single coat", "Double coat", "Triple coat", "No coat"],
+                correct: 1
+            }
+        ];
+        
+        let currentQuestion = 0;
+        let score = 0;
+        
+        const quizQuestion = document.getElementById('quiz-question');
+        const quizOptions = document.getElementById('quiz-options');
+        const nextButton = document.getElementById('next-question');
+        const quizResult = document.getElementById('quiz-result');
+        
+        function loadQuestion() {
+            const question = quizQuestions[currentQuestion];
+            quizQuestion.textContent = question.question;
+            quizOptions.innerHTML = '';
+            
+            question.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.textContent = option;
+                button.classList.add('quiz-option');
+                button.addEventListener('click', () => checkAnswer(index));
+                quizOptions.appendChild(button);
+            });
+            
+            nextButton.style.display = 'none';
+            quizResult.textContent = '';
+        }
+        
+        function checkAnswer(selectedIndex) {
+            const question = quizQuestions[currentQuestion];
+            const options = document.querySelectorAll('.quiz-option');
+            
+            options.forEach(option => option.disabled = true);
+            
+            if (selectedIndex === question.correct) {
+                score++;
+                options[selectedIndex].classList.add('correct');
+            } else {
+                options[selectedIndex].classList.add('incorrect');
+                options[question.correct].classList.add('correct');
+            }
+            
+            nextButton.style.display = 'block';
+        }
+        
+        nextButton.addEventListener('click', () => {
+            currentQuestion++;
+            
+            if (currentQuestion < quizQuestions.length) {
+                loadQuestion();
+            } else {
+                quizQuestion.textContent = '';
+                quizOptions.innerHTML = '';
+                nextButton.style.display = 'none';
+                quizResult.innerHTML = `<h3>Quiz Complete!</h3><p>You scored ${score} out of ${quizQuestions.length}.</p>`;
+            }
+        });
+        
+        // Initialize quiz
+        loadQuestion();
+
+        // Floating paws animation
+        function createFloatingPaw() {
+            const paw = document.createElement('div');
+            paw.classList.add('floating-paw');
+            paw.innerHTML = '🐾';
+            paw.style.left = Math.random() * 100 + 'vw';
+            paw.style.animationDuration = Math.random() * 3 + 2 + 's';
+            paw.style.opacity = Math.random() * 0.5 + 0.3;
+            document.querySelector('.floating-paws').appendChild(paw);
+            
+            setTimeout(() => {
+                paw.remove();
+            }, 5000);
+        }
+        
+        setInterval(createFloatingPaw, 3000);
+    </script>
+</body>
+</html> 
